@@ -1,0 +1,49 @@
+@import '../../styles/global-variables.scss';
+
+.error-code {
+  color: $highlight-color;
+  font-family: $Iceberg-font;
+  font-size: 144px;
+  font-weight: 400;
+  line-height: 176px;
+  letter-spacing: 0px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.first-p {
+  color: $white-color;
+  font-family: $Iceberg-font;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 88px;
+  letter-spacing: 0px;
+}
+.second-p {
+  color: $white-color;
+  font-family: $Poppins-font;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 54px;
+  letter-spacing: 0px;
+}
+.go-back-button {
+  width: 250px;
+  height: 50px;
+  color: $white-color;
+  background-color: $highlight-color;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: $Poppins-font;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 0px;
+}
+.go-back-button:hover {
+  opacity: 85%;
+  cursor: pointer;
+}
+.go-back-button:active {
+  transform: translateY(2px);
+}

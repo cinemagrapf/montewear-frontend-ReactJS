@@ -1,0 +1,139 @@
+@import '../../styles/global-variables.scss';
+
+.header {
+  background: $navbar-gradient;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  z-index: 1050;
+}
+
+.nav-link {
+  color: $white-color;
+  font-family: $Iceberg-font;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 55px;
+  width: 100%;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: $form-color !important;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.active {
+  color: $highlight-color !important;
+  text-shadow: 4px 4px 4px $footer-bg-color;
+  font-weight: bold;
+}
+
+.nav-link.active:hover,
+.nav-link.active:focus {
+  color: $highlight-color !important;
+  text-shadow: 4px 4px 4px $footer-bg-color;
+  font-weight: bold;
+  transform: none;
+  transition: none;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    height: 90px;
+    padding-top: 50px;
+  }
+
+  .navbar .container-fluid {
+    height: 100%;
+    align-items: center;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar {
+    min-height: 90px;
+  }
+
+  .navbar-collapse {
+    margin-top: 18px;
+    border-top: 1px solid $black-color;
+    padding-top: 16px;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 5px 0;
+    padding: 12px 20px !important;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    border-radius: 8px;
+    background-color: $form-color;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    background-color: $highlight-color;
+    color: $white-color !important;
+    transform: none;
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: none;
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-toggler-icon::before {
+    top: -8px;
+  }
+
+  .navbar-toggler-icon::after {
+    bottom: -8px;
+  }
+
+  .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
+    background-color: transparent;
+  }
+
+  .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+}
+
+.user-icon,
+.cart-icon {
+  font-size: 32px;
+}

@@ -1,0 +1,63 @@
+@import '../../styles/global-variables.scss';
+
+.form-container {
+  margin-top: 140px;
+  margin-bottom: 50px;
+  max-width: 1346px;
+  border-radius: 15px;
+  background-color: $form-color;
+}
+.contact-heading {
+  color: $black-color;
+  font-family: $Iceberg-font;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 59px;
+  letter-spacing: 0px;
+}
+.contact-description {
+  color: $black-color;
+  font-family: $Gelasio-font;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.form-control {
+  border-radius: 5px;
+  background: $body-bg-color;
+  resize: none;
+}
+.form-control::placeholder {
+  color: $white-color;
+  font-family: $Poppins-font;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.btn-custom {
+  border-radius: 10px;
+  background: $highlight-color;
+  height: 60px;
+  color: rgba(255, 255, 255, 1);
+
+  font-family: $Audiowide-font;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0px;
+}
+.btn-custom:hover {
+  background-color: darken($highlight-color, 5%);
+  color: $white-color;
+}
+.side-image {
+  width: 740px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: 10px solid $white-color;
+  border-radius: 15px;
+}
