@@ -226,7 +226,7 @@ const FAQform = () => {
               </div>
               {/* Answers */}
               <div className="answers-column col-md-6 mx-auto">
-                <p className="answer">{formatAnswer(answer)}</p>
+                <div className="answer">{formatAnswer(answer)}</div>
               </div>
             </div>
           </div>
