@@ -1,103 +1,176 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
+import React, { useState } from 'react';
 import './ProductSorting.scss';
 
 const ProductSorting = () => {
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState({
-    sortBy: 'Price',
-    size: 'Size',
-    color: 'Color',
-    brand: 'Brand',
-    material: 'Material',
-    style: 'Style',
+  const [filters, setFilters] = useState({
+    price: '',
+    size: '',
+    color: '',
+    brand: '',
+    material: '',
+    style: '',
   });
 
-  const containerRef = useRef(null);
-
   const filterOptions = {
-    sortBy: ['Price: Low to High', 'Price: High to Low', 'Newest', 'Most Popular', 'Rating'],
-    size: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Blue', 'Green', 'Yellow', 'Pink', 'Gray'],
-    brand: ['Nike', 'Adidas', 'Puma', 'Reebok', 'Under Armour', 'New Balance'],
-    material: ['Cotton', 'Polyester', 'Wool', 'Silk', 'Leather', 'Denim'],
-    style: ['Casual', 'Formal', 'Sport', 'Vintage', 'Modern', 'Classic'],
+    price: [
+      { value: '', label: 'Price' },
+      { value: 'low-high', label: 'Low to High' },
+      { value: 'high-low', label: 'High to Low' },
+      { value: 'under-50', label: 'Under $50' },
+      { value: '50-100', label: '$50 - $100' },
+      { value: '100-200', label: '$100 - $200' },
+      { value: 'over-200', label: 'Over $200' },
+    ],
+    size: [
+      { value: '', label: 'Size' },
+      { value: 'xs', label: 'XS' },
+      { value: 's', label: 'S' },
+      { value: 'm', label: 'M' },
+      { value: 'l', label: 'L' },
+      { value: 'xl', label: 'XL' },
+      { value: 'xxl', label: 'XXL' },
+    ],
+    color: [
+      { value: '', label: 'Color' },
+      { value: 'black', label: 'Black' },
+      { value: 'white', label: 'White' },
+      { value: 'gray', label: 'Gray' },
+      { value: 'blue', label: 'Blue' },
+      { value: 'red', label: 'Red' },
+      { value: 'green', label: 'Green' },
+      { value: 'yellow', label: 'Yellow' },
+      { value: 'pink', label: 'Pink' },
+      { value: 'beige', label: 'Beige' },
+    ],
+    brand: [
+      { value: '', label: 'Brand' },
+      { value: 'nike', label: 'Nike' },
+      { value: 'adidas', label: 'Adidas' },
+      { value: 'zara', label: 'Zara' },
+      { value: 'hm', label: 'H&M' },
+      { value: 'gap', label: 'Gap' },
+      { value: 'levis', label: "Levi's" },
+      { value: 'uniqlo', label: 'Uniqlo' },
+    ],
+    material: [
+      { value: '', label: 'Material' },
+      { value: 'cotton', label: 'Cotton' },
+      { value: 'polyester', label: 'Polyester' },
+      { value: 'wool', label: 'Wool' },
+      { value: 'silk', label: 'Silk' },
+      { value: 'denim', label: 'Denim' },
+      { value: 'linen', label: 'Linen' },
+      { value: 'leather', label: 'Leather' },
+    ],
+    style: [
+      { value: '', label: 'Style' },
+      { value: 'casual', label: 'Casual' },
+      { value: 'formal', label: 'Formal' },
+      { value: 'sporty', label: 'Sporty' },
+      { value: 'streetwear', label: 'Streetwear' },
+      { value: 'vintage', label: 'Vintage' },
+      { value: 'bohemian', label: 'Bohemian' },
+      { value: 'minimalist', label: 'Minimalist' },
+    ],
   };
 
-  const toggleDropdown = (key) => {
-    setOpenDropdown((prev) => (prev === key ? null : key));
-  };
-
-  const selectOption = (filterKey, option) => {
-    setSelectedFilters((prev) => ({
+  const handleFilterChange = (filterType, value) => {
+    setFilters((prev) => ({
       ...prev,
-      [filterKey]: option,
+      [filterType]: value,
     }));
-    setOpenDropdown(null);
-  };
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setOpenDropdown(null);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const renderDropdown = (key, label) => {
-    const isOpen = openDropdown === key;
-    const displayValue = selectedFilters[key];
-    const isDefault = displayValue === label;
-
-    return (
-      <div className="filter-item" key={key}>
-        <button
-          className={`filter-button ${isOpen ? 'active' : ''} ${!isDefault ? 'selected' : ''}`}
-          onMouseDown={(e) => {
-            e.preventDefault();
-            toggleDropdown(key);
-          }}>
-          <span className="filter-label">{displayValue}</span>
-          <ChevronDown size={16} className={`chevron ${isOpen ? 'rotate' : ''}`} />
-        </button>
-
-        {isOpen && (
-          <div className="dropdown-menu" onMouseDown={(e) => e.stopPropagation()}>
-            {filterOptions[key].map((option, idx) => (
-              <div
-                key={idx}
-                className={`dropdown-item ${selectedFilters[key] === option ? 'active' : ''}`}
-                onMouseDown={() => selectOption(key, option)}>
-                {option}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    );
   };
 
   return (
-    <div className="filter-sort-container" ref={containerRef}>
-      <div className="filter-bar">
-        <div className="sort-section">
-          <span className="sort-label">SORT by:</span>
-        </div>
+    <div className="sort-module">
+      <div className="filters-container">
+        <span className="sort-label">SORT by:</span>
 
-        <div className="filters-section">
-          {renderDropdown('sortBy', 'Price')}
-          {renderDropdown('size', 'Size')}
-          {renderDropdown('color', 'Color')}
-          {renderDropdown('brand', 'Brand')}
-          {renderDropdown('material', 'Material')}
-          {renderDropdown('style', 'Style')}
-        </div>
+        <select
+          value={filters.price}
+          onChange={(e) => handleFilterChange('price', e.target.value)}
+          className={`filter-dropdown ${!filters.price ? 'placeholder' : ''}`}>
+          {filterOptions.price.map((option, index) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className={index === 0 ? 'placeholder-option' : ''}>
+              {option.label}
+            </option>
+          ))}
+        </select>
 
-        <button className="more-filters-button">More filters</button>
+        <select
+          value={filters.size}
+          onChange={(e) => handleFilterChange('size', e.target.value)}
+          className={`filter-dropdown ${!filters.size ? 'placeholder' : ''}`}>
+          {filterOptions.size.map((option, index) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className={index === 0 ? 'placeholder-option' : ''}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.color}
+          onChange={(e) => handleFilterChange('color', e.target.value)}
+          className={`filter-dropdown ${!filters.color ? 'placeholder' : ''}`}>
+          {filterOptions.color.map((option, index) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className={index === 0 ? 'placeholder-option' : ''}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.brand}
+          onChange={(e) => handleFilterChange('brand', e.target.value)}
+          className={`filter-dropdown ${!filters.brand ? 'placeholder' : ''}`}>
+          {filterOptions.brand.map((option, index) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className={index === 0 ? 'placeholder-option' : ''}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.material}
+          onChange={(e) => handleFilterChange('material', e.target.value)}
+          className={`filter-dropdown ${!filters.material ? 'placeholder' : ''}`}>
+          {filterOptions.material.map((option, index) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className={index === 0 ? 'placeholder-option' : ''}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.style}
+          onChange={(e) => handleFilterChange('style', e.target.value)}
+          className={`filter-dropdown ${!filters.style ? 'placeholder' : ''}`}>
+          {filterOptions.style.map((option, index) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className={index === 0 ? 'placeholder-option' : ''}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
+        <button className="apply-filters-btn">Apply Filters</button>
       </div>
     </div>
   );
