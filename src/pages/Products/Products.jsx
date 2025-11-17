@@ -3,14 +3,17 @@ import Footer from '../../components/layout/Footer.jsx';
 import ProductGrid from '../../components/cards/ProductGrid.jsx';
 import ProductCatalog from '../../components/navigation/ProductCatalog.jsx';
 import ProductPagination from '../../components/navigation/ProductPagination.jsx';
+import './Products.scss';
 
 function Products() {
   return (
     <div className="App">
       <Header />
-      <ProductCatalog />
-      <ProductGrid />
-      <ProductPagination />
+      <div className="products-page">
+        <ProductCatalog />
+        <ProductGrid />
+        <ProductPagination />
+      </div>
       <Footer />
     </div>
   );

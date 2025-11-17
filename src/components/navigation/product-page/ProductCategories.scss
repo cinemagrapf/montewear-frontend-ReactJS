@@ -1,0 +1,61 @@
+@import '../../../styles/global-variables.scss';
+
+.segmented-control {
+  width: 600px;
+  height: 55px;
+  position: relative;
+  display: flex;
+  border-radius: 50px;
+  box-shadow: inset 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: $form-color;
+  padding: 5px;
+  gap: 25px;
+  font-family: $Poppins-font, sans-serif;
+}
+
+@media (max-width: 991.98px) {
+  .segmented-control {
+    width: 100%;
+  }
+}
+.segmented-control__slider {
+  width: 180px;
+  height: 45px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: calc(100% - 10px);
+  background: $highlight-color;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.segment {
+  flex: 1;
+  position: relative;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgba(83, 109, 254, 0.5);
+  color: $white-color;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  outline: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.segment:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.segment.active {
+  color: $white-color !important;
+}
