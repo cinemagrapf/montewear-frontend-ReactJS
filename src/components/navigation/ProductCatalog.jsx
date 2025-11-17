@@ -1,5 +1,5 @@
 import ProductCategories from './product-page/ProductCategories.jsx';
-import ProductSearchBar from './product-page/ProductSearchBar.jsx';
+import SearchBar from '../ui/SearchBar.jsx';
 import ProductSorting from './product-page/ProductSorting.jsx';
 import './ProductCatalog.scss';
 
@@ -8,7 +8,7 @@ const ProductCatalog = () => {
     <div className="product-catalog-container">
       <div className="top-bar">
         <ProductCategories />
-        <ProductSearchBar />
+        <SearchBar />
       </div>
 
       <div className="sorting-wrapper">
