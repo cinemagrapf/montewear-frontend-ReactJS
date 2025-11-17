@@ -105,11 +105,16 @@ const products = [
   },
 ];
 
-const ProductGrid = () => {
+const ProductGrid = ({ currentPage, productsPerPage }) => {
+  const start = (currentPage - 1) * productsPerPage;
+  const end = start + productsPerPage;
+
+  const visibleProducts = products.slice(start, end);
+
   return (
     <div className="product-grid-container mx-auto my-3">
       <div className="row g-3">
-        {products.map((product) => (
+        {visibleProducts.map((product) => (
           <Col key={product.id} className="d-flex justify-content-center">
             <ProductCard
               _id={product._id}

@@ -1,0 +1,64 @@
+@use '../../styles/global-variables.scss' as variables;
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  gap: 10px;
+  max-width: fit-content;
+  border-radius: 50px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), -4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: variables.$form-color;
+  font-family: variables.$Poppins-font, sans-serif;
+}
+
+.page-btn {
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: none;
+  background: #ccc;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: #aaa;
+  }
+}
+
+.page-numbers {
+  display: flex;
+  gap: 8px;
+  font-family: variables.$Iceberg-font;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 5px;
+  text-align: left;
+}
+
+.page-number {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  transition: 0.2s;
+
+  &.active {
+    background: variables.$highlight-color;
+    color: white !important;
+    text-shadow: none;
+    font-weight: bold;
+  }
+
+  &:hover:not(.active) {
+    background: #bbb;
+  }
+}
