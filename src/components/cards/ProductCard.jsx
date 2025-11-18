@@ -2,9 +2,11 @@ import './ProductCard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from '../../context/CartContext.jsx';
+import { useState } from 'react';
 
 const ProductCard = (props) => {
   const { addToCart } = useCart();
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleAdd = () => {
     addToCart({
@@ -13,9 +15,18 @@ const ProductCard = (props) => {
       productName: props.productName,
       price: props.price,
     });
+
+    setShowPopup(true);
+
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
   };
+
   return (
     <div className="product-card">
+      {showPopup && <div className="popup">Added to cart!</div>}
+
       <div className="image-container">
         <div className="d-flex">
           <span className="discount">{props.discount}</span>
