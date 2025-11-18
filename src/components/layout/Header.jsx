@@ -6,16 +6,24 @@ import AuthModal from '../modals/auth/AuthModal.jsx';
 //FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+// import CartIcon from '../ui/CartIcon.jsx';
+import CartModal from '../../components/modals/CartModal.jsx';
+import { useCart } from '../../context/CartContext.jsx';
 
 //Navbar logo
 import navbarLogo from '../../assets/icons/navbar-logo.png';
 
 const Header = () => {
+  //Auth modal handlers
   const [isAuthModalOpen, setAuthModalOpen] = useState(false);
-
   const openAuthModal = () => setAuthModalOpen(true);
   const closeAuthModal = () => setAuthModalOpen(false);
+
+  //Cart modal state
+  const [show, setShow] = useState(false);
+  const { cartItems } = useCart();
 
   return (
     <>
@@ -75,9 +83,10 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link cart-icon" to="#cart">
-                    <FontAwesomeIcon icon={faCartShopping} />
-                  </Link>
+                  <button className="nav-link cart-icon" onClick={() => setShow(true)}>
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                    {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
+                  </button>
                 </li>
               </ul>
             </div>
@@ -85,6 +94,7 @@ const Header = () => {
         </nav>
       </header>
       {isAuthModalOpen && <AuthModal onClose={closeAuthModal} />}
+      {show && <CartModal onClose={() => setShow(false)} />}
     </>
   );
 };

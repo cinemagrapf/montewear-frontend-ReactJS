@@ -1,8 +1,19 @@
 import './ProductCard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useCart } from '../../context/CartContext.jsx';
 
 const ProductCard = (props) => {
+  const { addToCart } = useCart();
+
+  const handleAdd = () => {
+    addToCart({
+      id: props.id,
+      img: props.img,
+      productName: props.productName,
+      price: props.price,
+    });
+  };
   return (
     <div className="product-card">
       <div className="image-container">
@@ -27,7 +38,7 @@ const ProductCard = (props) => {
       <p className="product-sizes">
         <span>Sizes: {props.sizes?.join(', ')}</span>
         <span>
-          <button className="product-button" type="button">
+          <button className="product-button" type="button" onClick={handleAdd}>
             Add to Cart
           </button>
         </span>

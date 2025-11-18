@@ -1,0 +1,188 @@
+/* CartModal.scss
+   Styles for cart modal overlay, modal box, list, and responsive behavior.
+*/
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cart-modal-overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* above most page elements */
+  padding: 20px; /* spacing on small screens */
+}
+
+/* Modal box */
+.cart-modal {
+  width: 100%;
+  max-width: 540px; /* desktop width */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  padding: 18px 20px;
+  animation: modalFadeIn 200ms ease-out;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh; /* keep modal from overflowing viewport */
+  overflow: hidden;
+}
+
+/* Close button (top-right) */
+.cart-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.12s ease;
+}
+
+.cart-close-btn:focus,
+.cart-close-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+/* Heading */
+.cart-modal h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Cart list area: scrollable if many items */
+.cart-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Single cart item */
+.cart-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.12s;
+}
+
+.cart-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Thumbnail */
+.cart-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: #f6f6f6;
+}
+
+/* Item info (title + price) */
+.cart-item > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-item h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cart-item p {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Footer area: totals + actions */
+.cart-modal-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cart-total {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.checkout-btn {
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.12s;
+}
+
+.checkout-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Empty cart message */
+.cart-modal p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Small screens: modal nearly full-screen but with margins */
+@media (max-width: 480px) {
+  .cart-modal {
+    max-width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .cart-item img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .cart-close-btn {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* Accessibility: ensure focusable elements visible */
+.cart-close-btn:focus,
+.checkout-btn:focus {
+  outline: 3px solid rgba(0, 0, 0, 0.08);
+  outline-offset: 2px;
+}
