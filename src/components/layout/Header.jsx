@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-// import CartIcon from '../ui/CartIcon.jsx';
+// Cart components and context
 import CartModal from '../../components/modals/CartModal.jsx';
 import { useCart } from '../../context/CartContext.jsx';
 
@@ -82,10 +82,11 @@ const Header = () => {
                     FAQ
                   </NavLink>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item position-relative">
                   <button className="nav-link cart-icon" onClick={() => setShow(true)}>
                     <FontAwesomeIcon icon={faShoppingCart} />
                     {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
+                    {notifyAdd && <CartNotification />}
                   </button>
                 </li>
               </ul>
