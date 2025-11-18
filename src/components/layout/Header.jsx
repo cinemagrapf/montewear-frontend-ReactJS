@@ -23,7 +23,9 @@ const Header = () => {
 
   //Cart modal state
   const [show, setShow] = useState(false);
-  const { cartItems } = useCart();
+  const { getCartItemsCount } = useCart();
+
+  const itemsCount = getCartItemsCount();
 
   return (
     <>
@@ -85,7 +87,7 @@ const Header = () => {
                 <li className="nav-item position-relative">
                   <button className="nav-link cart-icon" onClick={() => setShow(true)}>
                     <FontAwesomeIcon icon={faShoppingCart} />
-                    {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
+                    {itemsCount > 0 && <span className="cart-count">{itemsCount}</span>}
                   </button>
                 </li>
               </ul>

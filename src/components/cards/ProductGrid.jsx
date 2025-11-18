@@ -117,7 +117,7 @@ const ProductGrid = ({ currentPage, productsPerPage }) => {
         {visibleProducts.map((product) => (
           <Col key={product.id} className="d-flex justify-content-center">
             <ProductCard
-              _id={product._id}
+              id={product.id}
               img={product.img}
               discount={product.discount}
               productName={product.productName}
