@@ -1,4 +1,5 @@
-@import '../../styles/global-variables.scss';
+@use '@/styles/global-variables.scss' as *;
+@use 'sass:color';
 
 .form-container {
   margin-top: 140px;
@@ -51,7 +52,7 @@
   letter-spacing: 0px;
 }
 .btn-custom:hover {
-  background-color: darken($highlight-color, 5%);
+  background-color: color.adjust($highlight-color, $lightness: -5%);
   color: $white-color;
 }
 .side-image {

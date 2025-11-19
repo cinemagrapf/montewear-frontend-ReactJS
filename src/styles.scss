@@ -1,6 +1,6 @@
-@import '/src/styles/global-variables.scss';
-@import '/src/styles/global.scss';
-@import '/src/styles/mixins.scss';
+@use './styles/global.scss' as *;
+@use './styles/global-variables.scss' as *;
+@use './styles/mixins.scss' as *;
 
 .m-90 {
   margin: 90px !important;

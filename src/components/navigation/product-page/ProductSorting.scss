@@ -1,4 +1,4 @@
-@import '../../../styles/global-variables.scss';
+@use '@/styles/global-variables.scss' as *;
 
 .sort-module {
   font-family: $Iceberg-font;

@@ -1,32 +1,5 @@
-@use '../../styles/global-variables.scss' as variables;
+@use '@/styles/global-variables.scss' as *;
 
-// .search-container {
-//   width: 50%;
-//   display: flex;
-//   justify-content: end;
-//   position: relative;
-//   margin-left: 10px;
-
-//   .search-input {
-//     max-width: 600px;
-//     width: 100%;
-//     height: 55px;
-//     position: relative;
-//     display: flex;
-//     border-radius: 50px;
-//     box-shadow: inset 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-//     background: rgba(196, 196, 196, 1);
-//   }
-
-//   @media (max-width: 991.98px) {
-//     .search-input {
-//       max-width: 400px;
-//       width: 100%;
-//       justify-content: center;
-//       margin: 0 auto;
-//     }
-//   }
-// }
 .search-container {
   position: relative;
   max-width: 600px;
@@ -41,9 +14,9 @@
     padding-left: 45px;
     border: none;
     box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-    background: variables.$form-color;
+    background: $form-color;
     display: block;
-    font-family: variables.$Iceberg-font, sans-serif;
+    font-family: $Iceberg-font, sans-serif;
     font-size: 20px;
   }
 

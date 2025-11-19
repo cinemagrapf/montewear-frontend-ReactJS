@@ -1,3 +1,5 @@
+@use '@/styles/global-variables.scss' as *;
+
 body {
   font-family: $Poppins-font;
   background-color: $body-bg-color;

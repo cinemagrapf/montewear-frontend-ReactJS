@@ -1,4 +1,4 @@
-@use '../../styles/global-variables.scss' as variables;
+@use '@/styles/global-variables.scss' as *;
 
 .pagination-container {
   display: flex;
@@ -9,8 +9,8 @@
   max-width: fit-content;
   border-radius: 50px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), -4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  background: variables.$form-color;
-  font-family: variables.$Poppins-font, sans-serif;
+  background: $form-color;
+  font-family: $Poppins-font, sans-serif;
 }
 
 .page-btn {
@@ -35,7 +35,7 @@
 .page-numbers {
   display: flex;
   gap: 8px;
-  font-family: variables.$Iceberg-font;
+  font-family: $Iceberg-font;
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -52,7 +52,7 @@
   transition: 0.2s;
 
   &.active {
-    background: variables.$highlight-color;
+    background: $highlight-color;
     color: white !important;
     text-shadow: none;
     font-weight: bold;
