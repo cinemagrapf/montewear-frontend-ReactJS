@@ -57,8 +57,8 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone <https://github.com/cinemagrapf/montewear-frontend-ReactJS>
-cd <montewear-frontend-ReactJS>
+git clone https://github.com/cinemagrapf/montewear-frontend-ReactJS
+cd montewear-frontend-ReactJS
 ```
 
 2. Install dependencies:
@@ -104,7 +104,7 @@ npm run build
 
 ---
 
-<!-- ## Contributing
+## Contributing
 
 Contributions are welcome!
 
@@ -112,10 +112,10 @@ Contributions are welcome!
 2. Create a new branch (`git checkout -b feature-name`)
 3. Commit your changes (`git commit -m "Description"`)
 4. Push to the branch (`git push origin feature-name`)
-5. Create a Pull Request -->
+5. Create a Pull Request
 
 ---
 
 ## License
 
-<!-- This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details. -->
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
