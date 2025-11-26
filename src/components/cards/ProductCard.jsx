@@ -23,13 +23,21 @@ const ProductCard = (props) => {
     }, 2000);
   };
 
+  function calculateDiscount(oldPrice, price) {
+    if (!oldPrice || oldPrice <= price) return 0;
+    return Math.round(((oldPrice - price) / oldPrice) * 100);
+  }
+
   return (
     <div className="product-card">
       {showPopup && <div className="popup">Added to cart!</div>}
 
       <div className="image-container">
         <div className="d-flex">
-          <span className="discount">{props.discount}</span>
+          {props.oldPrice == null ? null : (
+            <span className="discount">Save {calculateDiscount(props.oldPrice, props.price)}%</span>
+          )}
+
           <button className="favorite" type="button">
             <FontAwesomeIcon icon={faHeart} className="fa-heart" />
           </button>
@@ -40,10 +48,12 @@ const ProductCard = (props) => {
 
       <h3 className="product-name">{props.productName}</h3>
       <p className="product-price">
-        {props.price}{' '}
-        <span className="old-price">
-          <del>{props.oldPrice}</del>
-        </span>
+        ${props.price}{' '}
+        {props.oldPrice == null ? null : (
+          <span className="old-price">
+            <del>${props.oldPrice}</del>
+          </span>
+        )}
         {/* <span className="color-picker">{props.color?.join(' ')}</span> */}
       </p>
       <p className="product-sizes">
