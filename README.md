@@ -22,6 +22,7 @@ npm install
 ```bash
 cd frontend
 git clone https://github.com/username/repository.git .
+npm install
 
 npm run dev
 ```
