@@ -67,7 +67,7 @@ const CartModal = ({ onClose }) => {
 
                   <div className="cart-item-details">
                     <h4>{item.productName}</h4>
-                    <p className="item-price">{item.price}</p>
+                    <p className="item-price">${item.price}</p>
 
                     <div className="quantity-controls">
                       <button
