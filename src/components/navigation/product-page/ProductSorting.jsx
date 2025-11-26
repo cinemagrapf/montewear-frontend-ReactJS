@@ -65,7 +65,7 @@ const ProductSorting = () => {
     style: [
       { value: '', label: 'Style' },
       { value: 'streetwear', label: 'Streetwear' },
-      { value: 'streetwear', label: 'Techwear' },
+      { value: 'techwear', label: 'Techwear' },
       { value: 'casual', label: 'Casual' },
       { value: 'steampunk', label: 'Steampunk' },
       { value: 'formal', label: 'Formal' },
