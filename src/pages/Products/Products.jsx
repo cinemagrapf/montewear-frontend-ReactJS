@@ -9,6 +9,7 @@ import './Products.scss';
 function Products() {
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState('men');
+  const [searchText, setSearchText] = useState('');
   const [sortFilters, setSortFilters] = useState({
     price: '',
     size: '',
@@ -30,6 +31,8 @@ function Products() {
           onCategoryChange={setCategory}
           onFilterChange={setSortFilters}
           onPageChange={setPage}
+          searchText={searchText}
+          onSearchTextChange={setSearchText}
         />
 
         <ProductGrid
@@ -37,6 +40,7 @@ function Products() {
           productsPerPage={productsPerPage}
           category={category}
           sortFilters={sortFilters}
+          searchText={searchText}
         />
 
         <ProductPagination

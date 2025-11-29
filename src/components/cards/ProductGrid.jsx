@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import ProductCard from './ProductCard.jsx';
 import { products } from '../../data/ProductList.js';
 
-const ProductGrid = ({ currentPage, productsPerPage, category, sortFilters }) => {
+const ProductGrid = ({ currentPage, productsPerPage, category, sortFilters, searchText }) => {
   let result = products;
 
   // Filtering by category
@@ -11,9 +11,11 @@ const ProductGrid = ({ currentPage, productsPerPage, category, sortFilters }) =>
     result = result.filter((p) => p.category?.toLowerCase() === category.toLowerCase());
   }
   // Filtering by searching
-  // if (){
-
-  // }
+  if (searchText) {
+    result = result.filter((p) => {
+      return p.productName.toLowerCase().includes(searchText.toLowerCase());
+    });
+  }
   // Sorting by filters
   if (sortFilters) {
     const { size, color, brand, material, style, price } = sortFilters; // priceMin, priceMax
